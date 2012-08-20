@@ -21,7 +21,6 @@ namespace XmlData {
             if (files.Count == 0)
                 throw new FileNotFoundException(Path.Combine(path, file_pattern));
 
-
             LoadXml(files);
         }
         protected AXmlDataFileCollection() { }
@@ -55,6 +54,15 @@ namespace XmlData {
 
         public void addFile(FileInfo path) {
 
+        }
+
+
+        public F getFile(string name) {
+            foreach (F file in this) {
+                if (file.File.Name == name)
+                    return file;
+            }
+            return null;
         }
 
     }
