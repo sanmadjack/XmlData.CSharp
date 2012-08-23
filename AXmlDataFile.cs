@@ -17,11 +17,16 @@ namespace XmlData {
         }
 
         protected virtual void loadXmlFile() {
-            foreach (XmlElement element in DocumentElement.ChildNodes) {
+            foreach (XmlNode node in DocumentElement.ChildNodes) {
                 //                try {
-                T entry = CreateDataEntry(element);
-                entry.SourceFile = this;
-                Entries.Add(entry);
+
+                if (node is XmlElement) {
+                    XmlElement element = node as XmlElement;
+                    T entry = CreateDataEntry(element);
+                    entry.SourceFile = this;
+                    Entries.Add(entry);
+                }
+
                 //              } catch (Exception e) {
                 //                continue;
                 //          }
