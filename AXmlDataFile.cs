@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Schema;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 namespace XmlData {
     public abstract class AXmlDataFile<T> : XmlFile where T : AXmlDataEntry {
-        protected AXmlDataFile(FileInfo file, bool create): base(file, create) {
+        protected AXmlDataFile(FileInfo file, bool create)
+            : base(file, create) {
             Entries.Clear();
             if (DocumentElement == null) {
                 this.AppendChild(CreatRootNode());
@@ -43,17 +40,17 @@ namespace XmlData {
         public void sortEntries() {
             Entries.Sort();
         }
-//        protected virtual XmlElement LoadRootNode(string name) {
-//            foreach (XmlNode node in this.ChildNodes) {
+        //        protected virtual XmlElement LoadRootNode(string name) {
+        //            foreach (XmlNode node in this.ChildNodes) {
 
-//                if (node.Name == name) {
-//                    return (XmlElement)node;
-//                }
-//            }
+        //                if (node.Name == name) {
+        //                    return (XmlElement)node;
+        //                }
+        //            }
 
-//            return (XmlElement)this.AppendChild(this.CreatRootNode(name));
-////            throw new XmlException("Missing root: " + name);
-//        }
+        //            return (XmlElement)this.AppendChild(this.CreatRootNode(name));
+        ////            throw new XmlException("Missing root: " + name);
+        //        }
 
         protected abstract XmlElement CreatRootNode();
 

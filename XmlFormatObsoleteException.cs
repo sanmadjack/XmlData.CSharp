@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
 using System.IO;
 namespace XmlData {
-    class XmlFormatObsoleteException: Exception {
+    class XmlFormatObsoleteException : Exception {
         public FileInfo File { get; protected set; }
         public Version FileVersion { get; protected set; }
         public Version LatestVersion { get; protected set; }

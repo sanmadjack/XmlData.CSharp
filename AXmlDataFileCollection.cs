@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Xml;
 namespace XmlData {
-    public abstract class AXmlDataFileCollection<F,E> : List<F> where  F : AXmlDataFile<E> where E: AXmlDataEntry {
+    public abstract class AXmlDataFileCollection<F, E> : List<F>
+        where F : AXmlDataFile<E>
+        where E : AXmlDataEntry {
         private DirectoryInfo path;
         private List<FileInfo> files;
         //private string file_pattern;
@@ -35,7 +33,7 @@ namespace XmlData {
             foreach (FileInfo file in files) {
                 F data_file;
                 data_file = ReadFile(file);
-                if(data_file!=null)
+                if (data_file != null)
                     this.Add(data_file);
             }
         }
@@ -45,7 +43,7 @@ namespace XmlData {
         public List<E> Entries {
             get {
                 List<E> return_me = new List<E>();
-                foreach(F file in this) {
+                foreach (F file in this) {
                     return_me.AddRange(file.Entries);
                 }
                 return return_me;

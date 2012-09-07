@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 namespace XmlData {
     public abstract class AXmlDataEntry {
         public XmlDocument Doc { get; protected set; }
@@ -30,7 +26,8 @@ namespace XmlData {
             this.Doc = document;
         }
 
-        public AXmlDataEntry(XmlElement element): this(element.OwnerDocument) {
+        public AXmlDataEntry(XmlElement element)
+            : this(element.OwnerDocument) {
             xml = element;
             LoadData(element);
         }
@@ -39,7 +36,7 @@ namespace XmlData {
             if (contents == null)
                 return ele;
 
-            XmlAttribute att= this.Doc.CreateAttribute(name);
+            XmlAttribute att = this.Doc.CreateAttribute(name);
             att.Value = contents;
             ele.Attributes.Append(att);
             return ele;
