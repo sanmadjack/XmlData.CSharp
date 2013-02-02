@@ -5,6 +5,7 @@ using System.Xml.Schema;
 namespace XmlData {
     public class XmlFile : XmlDocument {
         private static XmlReaderSettings xml_settings = new XmlReaderSettings();
+        
         static XmlFile() {
             xml_settings.ConformanceLevel = ConformanceLevel.Auto;
             xml_settings.IgnoreWhitespace = true;
@@ -16,10 +17,11 @@ namespace XmlData {
             xml_settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessIdentityConstraints;
             xml_settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
             xml_settings.ValidationEventHandler += new ValidationEventHandler(validationHandler);
+
         }
         public FileInfo File { get; private set; }
 
-        protected XmlFile(string xml) {
+        public XmlFile(string xml) {
             this.LoadXml(xml);
         }
 
