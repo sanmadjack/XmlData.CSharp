@@ -3,8 +3,8 @@ using System.IO;
 using System.Xml;
 namespace XmlData {
     public abstract class AXmlDataFile<T> : XmlFile where T : AXmlDataEntry {
-        protected AXmlDataFile(FileInfo file, bool create)
-            : base(file, create) {
+        protected AXmlDataFile(FileInfo file, bool create, string root_elemnent)
+            : base(file, create, root_elemnent) {
             Entries.Clear();
             if (DocumentElement == null) {
                 this.AppendChild(CreatRootNode());
