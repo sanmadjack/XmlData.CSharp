@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 namespace XmlData {
     public abstract class AXmlDataEntry {
         public XmlDocument Doc { get; protected set; }
@@ -33,7 +34,7 @@ namespace XmlData {
         }
 
         public XmlElement addAtribute(XmlElement ele, string name, string contents) {
-            if (contents == null)
+            if (String.IsNullOrEmpty(contents))
                 return ele;
 
             XmlAttribute att = this.Doc.CreateAttribute(name);
